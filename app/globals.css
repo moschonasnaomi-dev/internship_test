@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(1100px 600px at 12% -10%, rgba(79, 70, 229, 0.22), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(13, 148, 136, 0.16), transparent 55%),
+    #070b14;
+  color: #e2e8f5;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.04] shadow-lg shadow-black/20 backdrop-blur;
+  }
+
+  .card-pad {
+    @apply p-5;
+  }
+
+  /* One shared declaration block for every button, then colour variants.
+     (Tailwind v4 cannot @apply a custom class, so the base is not a separate class.) */
+  .btn,
+  .btn-primary,
+  .btn-ghost,
+  .btn-danger,
+  .btn-ai {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-sm font-medium
+      transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/70
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-500 text-white hover:bg-indigo-400 active:bg-indigo-600;
+  }
+
+  .btn-ghost {
+    @apply border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10;
+  }
+
+  .btn-danger {
+    @apply border border-rose-500/30 bg-rose-500/10 text-rose-200 hover:bg-rose-500/20;
+  }
+
+  .btn-ai {
+    @apply bg-gradient-to-r from-violet-500 via-indigo-500 to-sky-500 text-white shadow-lg
+      shadow-indigo-900/40 hover:brightness-110;
+  }
+
+  .field-label {
+    @apply mb-1 block text-[11px] font-semibold uppercase tracking-wide text-slate-400;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2 text-sm text-slate-100
+      placeholder:text-slate-500 focus:border-indigo-400/60 focus:outline-none;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2.5 py-1
+      text-xs text-slate-300;
+  }
+
+  .chip-active {
+    @apply border-indigo-400/50 bg-indigo-500/20 text-indigo-100;
+  }
+
+  .table-head {
+    @apply text-left text-[11px] font-semibold uppercase tracking-wide text-slate-400;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.28);
+  border-radius: 999px;
+}
